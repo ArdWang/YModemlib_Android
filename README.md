@@ -6,7 +6,7 @@ This is BWYModemLibrary
 #### Gradle使用<br/>
 
 ```java
-allprojects {
+	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
@@ -15,15 +15,16 @@ allprojects {
 ```
 
 ```java
-dependencies {
+	dependencies {
 	        implementation 'com.github.ArdWang:YModemLib:v1.0.0'
 	}
+
 ```
 
 #### Maven使用<br/>
 
 ```java
-<repositories>
+	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
@@ -32,9 +33,10 @@ dependencies {
 ```
 
 ```java
-<dependency>
+	<dependency>
 	    <groupId>com.github.ArdWang</groupId>
 	    <artifactId>YModemLib</artifactId>
 	    <version>v1.0.0</version>
 	</dependency>
+
 ```

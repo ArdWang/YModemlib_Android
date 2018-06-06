@@ -18,7 +18,7 @@ JitPack v1.0.0 API 19+
 
 ```java
 	dependencies {
-	        implementation 'com.github.ArdWang:YModemLib:v1.0.0'
+	        implementation 'com.github.ArdWang:YModemLib:1.0.0'
 	}
 
 ```
@@ -38,7 +38,7 @@ JitPack v1.0.0 API 19+
 	<dependency>
 	    <groupId>com.github.ArdWang</groupId>
 	    <artifactId>YModemLib</artifactId>
-	    <version>v1.0.0</version>
+	    <version>1.0.0</version>
 	</dependency>
 
 ```

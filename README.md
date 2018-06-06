@@ -1,7 +1,7 @@
 # YModemLib
 This is BWYModemLibrary
 
-### 使用方法
+### 使用方法 在项目中添加
 
 #### Gradle使用<br/>
 
@@ -40,3 +40,5 @@ This is BWYModemLibrary
 	</dependency>
 
 ```
+
+其它的操作方法请看app里面的操作

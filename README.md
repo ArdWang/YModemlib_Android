@@ -1,5 +1,7 @@
 # YModemLib
 This is BWYModemLibrary
+<br>
+JitPack v1.0.0 API 19+
 
 ### 使用方法 在项目中添加
 

@@ -1,18 +1,18 @@
 # YModemLib
 This is BWYModemLibrary
 
-###使用方法
+### 使用方法
 
-####Gradle使用<br/>
+#### Gradle使用<br/>
 
-'''java
+`
 allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-'''
+`
 
 '''java
 dependencies {
@@ -20,7 +20,7 @@ dependencies {
 	}
 '''
 
-####Maven使用<br/>
+#### Maven使用<br/>
 
 '''java
 <repositories>

@@ -43,4 +43,5 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 
 ```
 
-其它的操作方法请看app里面的操作
+其它的操作方法请看app里面的操作<br/>
+进入 [YModem蓝牙传输Demo](https://github.com/ArdWang/YModemBleUpdate "悬停显示")

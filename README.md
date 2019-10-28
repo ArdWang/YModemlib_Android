@@ -4,7 +4,7 @@
 Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯协议 具体操作需要查看Demo版本
 版本更新了v2.0.0
 
-支持经典蓝牙socket通讯 和 ble
+### 支持经典蓝牙socket通讯 和 ble
 
 ### 使用方法 在项目中添加
 
@@ -21,7 +21,7 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 
 ```java
 	dependencies {
-	        implementation 'com.github.ArdWang:YModemLib:1.0.0'
+	        implementation 'com.github.ArdWang:YModemLib:version'
 	}
 
 ```
@@ -29,6 +29,14 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 #### Maven使用<br/>
 
 ```java
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+	
 	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
@@ -41,7 +49,7 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 	<dependency>
 	    <groupId>com.github.ArdWang</groupId>
 	    <artifactId>YModemLib</artifactId>
-	    <version>1.0.0</version>
+	    <version>version</version>
 	</dependency>
 
 ```

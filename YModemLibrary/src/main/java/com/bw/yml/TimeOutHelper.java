@@ -6,7 +6,7 @@ import android.os.Handler;
  * A timer util for counting the time past after we sent a package to the terminal
  */
 
-public class TimeOutHelper {
+class TimeOutHelper {
 
     private ITimeOut listener;
 
@@ -22,16 +22,16 @@ public class TimeOutHelper {
         }
     };
 
-    public void startTimer(ITimeOut timeoutListener, long delay) {
+    void startTimer(ITimeOut timeoutListener, long delay) {
         listener = timeoutListener;
         timeoutHanldler.postDelayed(timer, delay);
     }
 
-    public void stopTimer() {
+    void stopTimer() {
         timeoutHanldler.removeCallbacksAndMessages(null);
     }
 
-    public void unRegisterListener() {
+    void unRegisterListener() {
         listener = null;
     }
 

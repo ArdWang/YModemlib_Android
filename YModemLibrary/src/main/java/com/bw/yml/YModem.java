@@ -11,13 +11,13 @@ import java.io.IOException;
  * SOH 00 FF "foo.c" "1064'' NUL[118] CRC CRC >>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ACK
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< C
- * STX 01 FE data[256] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>>
+ * STX 01 FE data[n] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * ACK STX 02 FD data[256] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
+ * ACK STX 02 FD data[n] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- * ACK STX 03 FC data[256] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
+ * ACK STX 03 FC data[n] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ACK
- * STX 04 FB data[256] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
+ * STX 04 FB data[n] CRC CRC>>>>>>>>>>>>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ACK
  * SOH 05 FA data[100] 1A[28] CRC CRC>>>>>>>>>>>>>>>>>>
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ACK
@@ -32,6 +32,8 @@ import java.io.IOException;
  *
  * 传输协议 编辑 ArdWang
  * 于 2018/6/5 15:49完成
+ *
+ * 版本更新 v2.0.0
  *
  */
 
@@ -68,6 +70,7 @@ public class YModem implements FileStreamThread.DataRaderListener {
     private static final int MAX_PACKAGE_SEND_ERROR_TIMES = 6;
     //the timeout interval for a single package
     private static final int PACKAGE_TIME_OUT = 6000;
+    static Integer mSize = 1024;
 
     /**
      * Construct of the YModemBLE,you may don't need the fileMD5 checking,remove it
@@ -77,12 +80,15 @@ public class YModem implements FileStreamThread.DataRaderListener {
      * @param fileNameString file name for sending to the terminal
      * @param fileMd5String  md5 for terminal checking after transmission finished 传输结束后的终端检查MD5
      */
-    YModem(Context context, String filePath,
-                  String fileNameString, String fileMd5String,
+    private YModem(Context context, String filePath,
+                  String fileNameString, String fileMd5String,Integer size,
                   YModemListener listener) {
         this.filePath = filePath;
         this.fileNameString = fileNameString;
         this.fileMd5String = fileMd5String;
+        if(size==0)
+            mSize = 1024;
+        mSize = size;
         this.mContext = context;
         this.listener = listener;
     }
@@ -356,6 +362,7 @@ public class YModem implements FileStreamThread.DataRaderListener {
         private String filePath;
         private String fileNameString;
         private String fileMd5String;
+        private Integer size;
         private YModemListener listener;
 
         public Builder with(Context context) {
@@ -373,6 +380,11 @@ public class YModem implements FileStreamThread.DataRaderListener {
             return this;
         }
 
+        public Builder sendSize(Integer size){
+            this.size = size;
+            return this;
+        }
+
         public Builder checkMd5(String fileMd5String) {
             this.fileMd5String = fileMd5String;
             return this;
@@ -384,7 +396,7 @@ public class YModem implements FileStreamThread.DataRaderListener {
         }
 
         public YModem build() {
-            return new YModem(context, filePath, fileNameString, fileMd5String, listener);
+            return new YModem(context, filePath, fileNameString, fileMd5String, size, listener);
         }
 
     }

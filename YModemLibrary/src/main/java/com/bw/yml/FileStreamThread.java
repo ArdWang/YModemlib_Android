@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Thread for reading input Stream and encapsulating into a ymodem package
+ *
  */
 
 public class FileStreamThread extends Thread {
@@ -26,7 +27,7 @@ public class FileStreamThread extends Thread {
         this.listener = listener;
     }
 
-    public int getFileByteSize(){
+    int getFileByteSize(){
         if (fileByteSize == 0 || inputStream == null) {
             initStream();
         }
@@ -44,8 +45,8 @@ public class FileStreamThread extends Thread {
 
     private void prepareData() throws IOException {
         initStream();
-        //1024 修改为 256
-        byte[] block = new byte[256];
+        //1024 修改为 n
+        byte[] block = new byte[YModem.mSize];
         int dataLength;
         byte blockSequence = 1;//The data package of a file is actually started from 1 文件的数据包实际上是从1开始的。
         isDataAcknowledged.set(true);
@@ -89,11 +90,11 @@ public class FileStreamThread extends Thread {
     /**
      * When received response from the terminal ,we should keep the thread keep going
      */
-    public void keepReading() {
+    void keepReading() {
         isDataAcknowledged.set(true);
     }
 
-    public void release() {
+    void release() {
         onStop();
         listener = null;
     }

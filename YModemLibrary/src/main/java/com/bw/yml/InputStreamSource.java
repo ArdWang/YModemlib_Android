@@ -10,9 +10,9 @@ import java.io.InputStream;
  * Get InputStream from different source, files from sd card/assets supported.
  */
 
-public class InputStreamSource {
-    //文件容量大小改为 32*256
-    private static final int BUFFER_SIZE = 32 * 256;
+class InputStreamSource {
+    //文件容量大小改为 32*n
+    private static final int BUFFER_SIZE = 32 * YModem.mSize;
     //private static final String ERROR_UNSUPPORTED_SCHEME = "Unsupported file source";
 
     InputStream getStream(Context context, String imageUri) throws IOException {

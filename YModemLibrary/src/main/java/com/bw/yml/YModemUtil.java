@@ -12,39 +12,35 @@ import java.util.Arrays;
  * Util for encapsulating data package of ymodem protocol
  * <p>
  * Created by leonxtp on 2017/9/16.
- * Modified by leonxtp on 2017/9/16
+ * Modified by rnd on 2019/10/28
  */
 
-public class YModemUtil {
+class YModemUtil {
 
     /*This is my concrete ymodem start signal, customise it to your needs*/
     private static final String Data = "Data BOOTLOADER";
-
     private static final byte SOH = 0x01; /* Start Of Header with data size :128*/
     private static final byte STX = 0x02; /* Start Of Header with data size : 1024*/
     private static final byte EOT = 0x04; /* End Of Transmission */
     private static final byte CPMEOF = 0x1A;/* Fill the last package if not long enough */
-
     private static CRC16 crc16 = new CRC16();
 
     /**
      * Get the first package data for hello with a terminal
-     * 用终端获取第一个hello数据包
      */
-    public static byte[] getYModelData() {
+    static byte[] getYModelData() {
         return Data.getBytes();
     }
 
 
     /**
      * Get the file name package data
-     * 获取文件名包数据
      *
      * @param fileNameString file name in String
      * @param fileByteSize   file byte size of int value
      * @param fileMd5String  the md5 of the file in String
      */
-    public static byte[] getFileNamePackage(String fileNameString,
+    static byte[] getFileNamePackage(String fileNameString,
                                             int fileByteSize,
                                             String fileMd5String) throws IOException {
 
@@ -72,9 +68,9 @@ public class YModemUtil {
      * @param sequence   the package serial number
      * @return a encapsulated package data block
      */
-    public static byte[] getDataPackage(byte[] block, int dataLength, byte sequence) throws IOException {
-        //每次传输 256个字节的数据
-        byte[] header = getDataHeader(sequence, block.length == 256 ? STX : SOH);
+    static byte[] getDataPackage(byte[] block, int dataLength, byte sequence) throws IOException {
+        //每次传输 n 个字节的数据
+        byte[] header = getDataHeader(sequence, block.length == YModem.mSize ? STX : SOH);
         //The last package, fill CPMEOF if the dataLength is not sufficient
         if (dataLength < block.length) {
             int startFil = dataLength;
@@ -98,14 +94,14 @@ public class YModemUtil {
     /**
      * Get the EOT package
      */
-    public static byte[] getEOT() {
+    static byte[] getEOT() {
         return new byte[]{EOT};
     }
 
     /**
      * Get the Last package
      */
-    public static byte[] getEnd() throws IOException {
+    static byte[] getEnd() throws IOException {
         byte seq = 0x00;
         return getDataPackage(new byte[128], 128, seq);
     }
@@ -115,7 +111,7 @@ public class YModemUtil {
      *
      * @param fileAbsolutePath absolute path of the file in asstes
      */
-    public static InputStream getInputStream(Context context, String fileAbsolutePath) throws IOException {
+    static InputStream getInputStream(Context context, String fileAbsolutePath) throws IOException {
         return new InputStreamSource().getStream(context, fileAbsolutePath);
     }
 

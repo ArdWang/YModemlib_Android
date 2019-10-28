@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.ym">
+
+    <!-- 应用使用蓝牙的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!--启动设备发现或操作蓝牙设置的权限-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:allowBackup="true"
@@ -8,8 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".demo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

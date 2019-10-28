@@ -3,8 +3,7 @@ package com.bw.yml;
 import java.util.Locale;
 
 /**
- * Thanks to Universal-Image-Loader:
- * https://github.com/nostra13/Android-Universal-Image-Loader/blob/master/library/src/main/java/com/nostra13/universalimageloader/core/download/ImageDownloader.java
+ * create by aesirot
  */
 public enum SourceScheme {
 

@@ -4,7 +4,51 @@
 Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯协议 具体操作需要查看Demo版本
 版本更新了v2.0.0
 
+非常感谢 LeonXtp 提供的源码支持 https://github.com/LeonXtp/YModemForAndroid
+
 ### 支持经典蓝牙socket通讯 和 ble
+
+1. 本次更新修改了一些错误的方法。
+
+2. 增加了可以选择发送数据大小 如下代码所示 可以修改你设备接收数据大小以及格式。
+
+```
+ private void startYmodem(){
+        yModem = new YModem.Builder()
+                .with(this)
+                .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径
+                .fileName("你的文件名字")
+                .checkMd5("") //Md5可以写可以不写 看自己的通讯协议
+                .sendSize(1024) //可以修改成你需要的大小
+                .callback(new YModemListener() {
+                    @Override
+                    public void onDataReady(byte[] data) {
+                        thread.write(data);
+                    }
+
+                    @Override
+                    public void onProgress(int currentSent, int total) {
+                        //进度条处理
+                    }
+
+                    @Override
+                    public void onSuccess() {
+                        //成功的显示
+                    }
+
+                    @Override
+                    public void onFailed(String reason) {
+
+                    }
+                }).build();
+        yModem.start();
+    }
+
+
+```
+
+3. 可以支持 Ble 以及 经典蓝牙。
+
 
 ### 使用方法 在项目中添加
 
@@ -18,6 +62,7 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 		}
 	}
 ```
+
 
 ```java
 	dependencies {

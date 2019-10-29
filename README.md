@@ -49,6 +49,32 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 
 3. 可以支持 Ble 以及 经典蓝牙。
 
+4. CRC_Check16
+```java
+
+public static String CRC16_Check(byte[] pushData[], int length){
+	int Reg_CRC = 0xffff;
+	int temp;
+	int i,j;
+	for(i=0;i<length;i++){
+		temp = pushData[i];
+		if(temp<0) temp+=256;
+		temp &= 0xff;
+		Reg_CRC ^= temp;
+		for(j=0; j<8; j++){
+			if((Reg_CRC & 0x0001))==0x0001){
+				Reg_CRC = (Reg_CRC >> 1)^0xA001;
+			}else{
+				Reg_CRC >>=1;
+			}
+		}
+	}
+	return Integer.toHexString((Reg_CRC&0xffff));
+}
+
+```
+
+
 
 ### 使用方法 在项目中添加
 

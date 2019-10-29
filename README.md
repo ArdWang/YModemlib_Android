@@ -52,7 +52,7 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 4. CRC_Check16
 ```java
 
-public static String CRC16_Check(byte[] pushData[], int length){
+public static String CRC16_Check(byte[] pushData, int length){
 	int Reg_CRC = 0xffff;
 	int temp;
 	int i,j;

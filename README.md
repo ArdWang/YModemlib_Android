@@ -4,7 +4,7 @@
 Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯协议 具体操作需要查看Demo版本
 版本更新了v2.0.0
 
-非常感谢 LeonXtp 提供的源码支持 https://github.com/LeonXtp/YModemForAndroid
+非常感谢 LeonXtp 提供的帮助
 
 ### 支持经典蓝牙socket通讯 和 ble
 

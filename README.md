@@ -6,6 +6,13 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 
 非常感谢 LeonXtp 提供的帮助
 
+### 更新日期 2020 8/11
+
+增加了简化版的 Ymodem升级协议 如下链接
+
+https://github.com/radianceltd/RilCompany_DFU025_Android
+
+
 ### 支持经典蓝牙socket通讯 和 ble
 
 1. 本次更新修改了一些错误的方法。

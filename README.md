@@ -6,6 +6,8 @@ Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯�
 
 非常感谢 LeonXtp 提供的帮助
 
+iOS版本的请看 https://github.com/ArdWang/YModemlib_iOS
+
 ### 更新日期 2020 8/11
 
 增加了简化版的 Ymodem升级协议 如下链接

@@ -1,25 +1,22 @@
 # YModemLib <br>
 <a href="https://developer.android.com/index.html" rel="nofollow"><img src="https://camo.githubusercontent.com/4e7c3559fec3db6e04cd6d800d00fe6515f75260/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d616e64726f69642d627269676874677265656e2e737667" alt="" data-canonical-src="https://img.shields.io/badge/platform-android-brightgreen.svg" style="max-width:100%;"></a> [![](https://jitpack.io/v/ArdWang/YModemLib.svg)](https://jitpack.io/#ArdWang/YModemLib)
 <br>
-Ymodem蓝牙通讯协议 使用版本 19+ 这里所指示的只是一个通讯协议 具体操作需要查看Demo版本
-版本更新了v2.0.0
+Ymodem Bluetooth communication protocol uses version 19+. What is indicated here is only a communication protocol. For specific operations, you need to check the Demo version. The version has been updated to v2.0.0
 
-非常感谢 LeonXtp 提供的帮助
+Thank you LeonXtp for your help
 
-iOS版本的请看 https://github.com/ArdWang/YModemlib_iOS
+iOS Version https://github.com/ArdWang/YModemlib_iOS
 
-### 更新日期 2020 8/11
+### Update 2020 8/11
 
-增加了简化版的 Ymodem升级协议 如下链接
-
-过一段时间补上
+A simplified version of the Ymodem upgrade protocol has been added
 
 
-### 支持经典蓝牙socket通讯 和 ble
+### Support classic Bluetooth socket communication and ble
 
-1. 本次更新修改了一些错误的方法。
+1. This update modified some wrong methods。
 
-2. 增加了可以选择发送数据大小 如下代码所示 可以修改你设备接收数据大小以及格式。
+2. Increase the data size you can choose to send, as shown in the following code, you can modify the size and format of the data received by your device。
 
 ```
  private void startYmodem(){
@@ -113,9 +110,9 @@ public static String CRC16_Check(byte[] pushData, int length){
 
 
 
-### 使用方法 在项目中添加
 
-#### Gradle使用<br/>
+
+#### Gradle Use <br/>
 
 ```java
 	allprojects {
@@ -134,7 +131,7 @@ public static String CRC16_Check(byte[] pushData, int length){
 
 ```
 
-#### Maven使用<br/>
+#### Maven Use <br/>
 
 ```java
 
@@ -162,11 +159,11 @@ public static String CRC16_Check(byte[] pushData, int length){
 
 ```
 
-其它的操作方法请看app里面的操作<br/>
-进入 [YModem蓝牙传输Demo](https://github.com/ArdWang/YModemBleUpdate "悬停显示")
+For other operations, please see the operations in the app<br/>
+into [YModemBleDemo](https://github.com/ArdWang/YModemBleUpdate "悬停显示")
 
 <br><br>
-YModem协议
+YModem delegate
 ```java
 /**
  * ========================================================================================

@@ -7,6 +7,10 @@ Thank you LeonXtp for your help
 
 iOS Version https://github.com/ArdWang/YModemlib_iOS
 
+### Update Dec 1/2021
+
+update some bug
+
 ### Update 2020 8/11
 
 A simplified version of the Ymodem upgrade protocol has been added

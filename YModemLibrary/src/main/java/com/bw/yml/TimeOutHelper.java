@@ -10,9 +10,9 @@ class TimeOutHelper {
 
     private ITimeOut listener;
 
-    private Handler timeoutHanldler = new Handler();
+    private final Handler timeoutHandler = new Handler();
 
-    private Runnable timer = new Runnable() {
+    private final Runnable timer = new Runnable() {
         @Override
         public void run() {
             stopTimer();
@@ -24,11 +24,11 @@ class TimeOutHelper {
 
     void startTimer(ITimeOut timeoutListener, long delay) {
         listener = timeoutListener;
-        timeoutHanldler.postDelayed(timer, delay);
+        timeoutHandler.postDelayed(timer, delay);
     }
 
     void stopTimer() {
-        timeoutHanldler.removeCallbacksAndMessages(null);
+        timeoutHandler.removeCallbacksAndMessages(null);
     }
 
     void unRegisterListener() {

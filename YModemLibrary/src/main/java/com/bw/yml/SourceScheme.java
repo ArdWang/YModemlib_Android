@@ -3,14 +3,14 @@ package com.bw.yml;
 import java.util.Locale;
 
 /**
- * create by aesirot
+ * create by ardWang
  */
 public enum SourceScheme {
 
     FILE("file"), ASSETS("assets"), UNKNOWN("");
 
-    private String scheme;
-    private String uriPrefix;
+    private final String scheme;
+    private final String uriPrefix;
 
     SourceScheme(String scheme) {
         this.scheme = scheme;

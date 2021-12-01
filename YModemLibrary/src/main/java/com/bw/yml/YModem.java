@@ -33,7 +33,8 @@ import java.io.IOException;
  * 传输协议 编辑 ArdWang
  * 于 2018/6/5 15:49完成
  *
- * 版本更新 v2.0.0
+ * version v2.0.0
+ * version v2.0.1
  *
  */
 
@@ -53,13 +54,13 @@ public class YModem implements FileStreamThread.DataRaderListener {
     private static final String MD5_OK = "MD5_OK";
     private static final String MD5_ERR = "MD5_ERR";
 
-    private Context mContext;
-    private String filePath;
-    private String fileNameString;
-    private String fileMd5String;
-    private YModemListener listener;
+    private final Context mContext;
+    private final String filePath;
+    private final String fileNameString;
+    private final String fileMd5String;
+    private final YModemListener listener;
 
-    private TimeOutHelper timerHelper = new TimeOutHelper();
+    private final TimeOutHelper timerHelper = new TimeOutHelper();
     private FileStreamThread streamThread;
 
     //bytes has been sent of this transmission
@@ -347,7 +348,7 @@ public class YModem implements FileStreamThread.DataRaderListener {
     }
 
     //The timeout listener
-    private TimeOutHelper.ITimeOut timeoutListener = new TimeOutHelper.ITimeOut() {
+    private final TimeOutHelper.ITimeOut timeoutListener = new TimeOutHelper.ITimeOut() {
         @Override
         public void onTimeOut() {
             Lg.f("------ time out ------");

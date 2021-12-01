@@ -13,11 +13,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FileStreamThread extends Thread {
 
-    private Context mContext;
+    private final Context mContext;
     private InputStream inputStream = null;
     private DataRaderListener listener;
-    private String filePath;
-    private AtomicBoolean isDataAcknowledged = new AtomicBoolean(false);
+    private final String filePath;
+    private final AtomicBoolean isDataAcknowledged = new AtomicBoolean(false);
     private boolean isKeepRunning = false;
     private int fileByteSize = 0;
 
@@ -75,10 +75,10 @@ public class FileStreamThread extends Thread {
                 break;
             }
 
-            byte[] packige = YModemUtil.getDataPackage(block, dataLength, blockSequence);
+            byte[] pack = YModemUtil.getDataPackage(block, dataLength, blockSequence);
 
             if (listener != null) {
-                listener.onDataReady(packige);
+                listener.onDataReady(pack);
             }
 
             blockSequence++;

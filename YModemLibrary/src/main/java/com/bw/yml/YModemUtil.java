@@ -23,7 +23,7 @@ class YModemUtil {
     private static final byte STX = 0x02; /* Start Of Header with data size : 1024*/
     private static final byte EOT = 0x04; /* End Of Transmission */
     private static final byte CPMEOF = 0x1A;/* Fill the last package if not long enough */
-    private static CRC16 crc16 = new CRC16();
+    private static final CRC16 crc16 = new CRC16();
 
     /**
      * Get the first package data for hello with a terminal
@@ -39,6 +39,7 @@ class YModemUtil {
      * @param fileNameString file name in String
      * @param fileByteSize   file byte size of int value
      * @param fileMd5String  the md5 of the file in String
+     *                       张丽婷
      */
     static byte[] getFileNamePackage(String fileNameString,
                                             int fileByteSize,

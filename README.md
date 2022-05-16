@@ -7,6 +7,10 @@ Thank you LeonXtp for your help
 
 iOS Version https://github.com/ArdWang/YModemlib_iOS
 
+### Update May 16/2022
+
+Update compatible AndroidX
+
 ### Update Dec 1/2021
 
 update some bug

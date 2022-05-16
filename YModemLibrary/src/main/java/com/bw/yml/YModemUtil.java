@@ -39,7 +39,7 @@ class YModemUtil {
      * @param fileNameString file name in String
      * @param fileByteSize   file byte size of int value
      * @param fileMd5String  the md5 of the file in String
-     *                       张丽婷
+     *
      */
     static byte[] getFileNamePackage(String fileNameString,
                                             int fileByteSize,

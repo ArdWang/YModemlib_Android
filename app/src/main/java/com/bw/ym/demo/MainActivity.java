@@ -3,10 +3,12 @@ package com.bw.ym.demo;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bw.ym.R;
 import com.bw.yml.YModem;
 import com.bw.yml.YModemListener;

@@ -7,6 +7,8 @@ Thank you LeonXtp for your help
 
 iOS Version https://github.com/ArdWang/YModemlib_iOS
 
+flutter https://github.com/QuickDevelopers/flutter_ymodem
+
 ### Update May 16/2022
 
 Update compatible AndroidX

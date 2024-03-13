@@ -36,6 +36,8 @@ import java.io.IOException;
  * version v2.0.0
  * version v2.0.1
  *
+ * version v2.0.2
+ *
  */
 
 public class YModem implements FileStreamThread.DataRaderListener {
@@ -97,8 +99,8 @@ public class YModem implements FileStreamThread.DataRaderListener {
     /**
      * Start the transmission
      */
-    public void start() {
-        sendData();
+    public void start(String data) {
+        sendData(data);
     }
 
     /**
@@ -154,11 +156,11 @@ public class YModem implements FileStreamThread.DataRaderListener {
      * Methods for sending data begin
      * ==============================================================================
      */
-    private void sendData() {
+    private void sendData(String data) {
         streamThread = new FileStreamThread(mContext, filePath, this);
         CURR_STEP = STEP_HELLO;
         Lg.f("StartData!!!");
-        byte[] hello = YModemUtil.getYModelData();
+        byte[] hello = YModemUtil.getYModelData(data);
         sendPackageData(hello);
     }
 

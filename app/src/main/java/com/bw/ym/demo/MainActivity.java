@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements ConnectThread.OnS
      * 开始Ymodel放在蓝牙点击按钮 启动的时候使用
      */
     private void startYmodem(){
+        String customData = "Customized Data";
         yModem = new YModem.Builder()
                 .with(this)
                 .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements ConnectThread.OnS
 
                     }
                 }).build();
-        yModem.start();
+        yModem.start(customData);
     }
 
     //用于接受到你蓝牙设备给你反馈的蓝牙信息

@@ -49,63 +49,6 @@ String customData = "Customized Data";
 
 ```
 
-
-### Update May 16/2022
-
-Update compatible AndroidX
-
-### Update Dec 1/2021
-
-update some bug
-
-### Update 2020 8/11
-
-A simplified version of the Ymodem upgrade protocol has been added
-
-
-### Support classic Bluetooth socket communication and ble
-
-1. This update modified some wrong methods。
-
-2. Increase the data size you can choose to send, as shown in the following code, you can modify the size and format of the data received by your device。
-
-```
-//If using the default, write it as Data BOOTLOADER
-String customData = "Data BOOTLOADER"; 
- private void startYmodem(){
-        yModem = new YModem.Builder()
-                .with(this)
-                .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径
-                .fileName("你的文件名字")
-                .checkMd5("") //Md5可以写可以不写 看自己的通讯协议
-                .sendSize(1024) //可以修改成你需要的大小
-                .callback(new YModemListener() {
-                    @Override
-                    public void onDataReady(byte[] data) {
-                        thread.write(data);
-                    }
-
-                    @Override
-                    public void onProgress(int currentSent, int total) {
-                        //进度条处理
-                    }
-
-                    @Override
-                    public void onSuccess() {
-                        //成功的显示
-                    }
-
-                    @Override
-                    public void onFailed(String reason) {
-
-                    }
-                }).build();
-        yModem.start(customData);
-    }
-
-
-```
-
 old :
 
 ```java
@@ -138,6 +81,27 @@ yModem = new YModem.Builder()
                 }).build();
         yModem.start();
 ```
+
+
+
+### Update May 16/2022
+
+Update compatible AndroidX
+
+### Update Dec 1/2021
+
+update some bug
+
+### Update 2020 8/11
+
+A simplified version of the Ymodem upgrade protocol has been added
+
+
+### Support classic Bluetooth socket communication and ble
+
+1. This update modified some wrong methods。
+
+2. Increase the data size you can choose to send, as shown in the following code, you can modify the size and format of the data received by your device。
 
 3. 可以支持 Ble 以及 经典蓝牙。
 

@@ -61,7 +61,7 @@ public class CRC16 {
                 0xA001, 0x6C00, 0x7800, 0xB401,
                 0x5000, 0x9C01, 0x8801, 0x4400
         };
-        int temp = 0;
+        int temp;
         // Compute checksum of lower four bits of a byte.
         temp = crc16_table[crc & 0xF];
         crc = (crc >> 4) & 0x0FFF;

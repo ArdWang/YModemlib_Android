@@ -17,7 +17,7 @@ Added dynamic YModemUtil Data.
 
 add： new
 ```java
-String customData = "Customized Data";
+String customData = "Data BOOTLOADER";
         yModem = new YModem.Builder()
                 .with(this)
                 .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径

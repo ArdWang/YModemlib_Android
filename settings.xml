@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>wjprogram@gmail.com</username>
+      <password>123456</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>wjprogram@gmail.com</username>
+      <password>123456</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>github-libs-release</name>
+          <url>https://programs.jfrog.io/artifactory/github-libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>github-libs-snapshot</name>
+          <url>https://programs.jfrog.io/artifactory/github-libs-snapshot</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>github-libs-release</name>
+          <url>https://programs.jfrog.io/artifactory/github-libs-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>github-libs-snapshot</name>
+          <url>https://programs.jfrog.io/artifactory/github-libs-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>a0p7vf5eepvwc-artifactory-primary-0-releases</name>
+        <url>https://programs.jfrog.io/artifactory/github-libs-release</url>
+    </repository>
+</distributionManagement>
+
+</settings>

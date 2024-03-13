@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+//import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Arrays;
 class YModemUtil {
 
     /*This is my concrete ymodem start signal, customise it to your needs*/
-    private static final String Data = "Data BOOTLOADER";
+    //private static final String Data = "Data BOOTLOADER";
     private static final byte SOH = 0x01; /* Start Of Header with data size :128*/
     private static final byte STX = 0x02; /* Start Of Header with data size : 1024*/
     private static final byte EOT = 0x04; /* End Of Transmission */
@@ -28,8 +29,19 @@ class YModemUtil {
     /**
      * Get the first package data for hello with a terminal
      */
-    static byte[] getYModelData() {
-        return Data.getBytes();
+//    static byte[] getYModelData() {
+//        return Data.getBytes();
+//    }
+
+    /**
+     * Get the first package data for hello with a terminal
+     * 2024
+     * 3/13更新 修改成动态的 调用采用
+     * String customData = "Customized Data";
+     * byte[] dataBytes = getYModelData(customData);
+     */
+    static byte[] getYModelData(String dynamicData) {
+        return dynamicData.getBytes();
     }
 
 
@@ -53,9 +65,12 @@ class YModemUtil {
                 new byte[]{seperator},
                 byteFileSize);
 
-        byte[] fileNameBytes2 = Arrays.copyOf(concat(fileNameBytes1,
-                new byte[]{seperator},
-                fileMd5String.getBytes()), 128);
+        byte[] fileNameBytes2 = new byte[0];
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
+            fileNameBytes2 = Arrays.copyOf(concat(fileNameBytes1,
+                    new byte[]{seperator},
+                    fileMd5String.getBytes()), 128);
+        }
 
         byte seq = 0x00;
         return getDataPackage(fileNameBytes2, 128, seq);

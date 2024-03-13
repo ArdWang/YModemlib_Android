@@ -30,3 +30,21 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+
+task deleteJar(type: Delete) {
+    delete 'libs/jars/logmanagementlib.jar'
+}
+
+task createJar(type: Copy) {
+    from('build/intermediates/aar_main_jar/release/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'ymodem.jar')
+}
+
+createJar.dependsOn(deleteJar, build)
+
+
+
+

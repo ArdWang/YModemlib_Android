@@ -1,13 +1,54 @@
 # YModemLib <br>
 <a href="https://developer.android.com/index.html" rel="nofollow"><img src="https://camo.githubusercontent.com/4e7c3559fec3db6e04cd6d800d00fe6515f75260/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706c6174666f726d2d616e64726f69642d627269676874677265656e2e737667" alt="" data-canonical-src="https://img.shields.io/badge/platform-android-brightgreen.svg" style="max-width:100%;"></a> [![](https://jitpack.io/v/ArdWang/YModemLib.svg)](https://jitpack.io/#ArdWang/YModemLib)
 <br>
-Ymodem Bluetooth communication protocol uses version 19+. What is indicated here is only a communication protocol. For specific operations, you need to check the Demo version. The version has been updated to v2.0.1
+
+----------------------
+Ymodem Bluetooth communication protocol uses version 19+. What is indicated here is only a communication protocol. For specific operations, you need to check the Demo version. The version has been updated to v2.0.2
 
 Thank you LeonXtp for your help
 
 iOS Version https://github.com/ArdWang/YModemlib_iOS
 
 flutter https://github.com/QuickDevelopers/flutter_ymodem
+
+### Update March 3/2024
+
+Added dynamic YModemUtil Data.
+
+add： new
+```java
+String customData = "Customized Data";
+        yModem = new YModem.Builder()
+                .with(this)
+                .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径
+                .fileName("你的文件名字")
+                .checkMd5("") //Md5可以写可以不写 看自己的通讯协议
+                .sendSize(1024) //可以修改成你需要的大小
+                .callback(new YModemListener() {
+                    @Override
+                    public void onDataReady(byte[] data) {
+                        thread.write(data);
+                    }
+
+                    @Override
+                    public void onProgress(int currentSent, int total) {
+                        //进度条处理
+                    }
+
+                    @Override
+                    public void onSuccess() {
+                        //成功的显示
+                    }
+
+                    @Override
+                    public void onFailed(String reason) {
+
+                    }
+                }).build();
+        yModem.start(customData);
+
+```
+
 
 ### Update May 16/2022
 
@@ -29,6 +70,8 @@ A simplified version of the Ymodem upgrade protocol has been added
 2. Increase the data size you can choose to send, as shown in the following code, you can modify the size and format of the data received by your device。
 
 ```
+//If using the default, write it as Data BOOTLOADER
+String customData = "Data BOOTLOADER"; 
  private void startYmodem(){
         yModem = new YModem.Builder()
                 .with(this)
@@ -57,10 +100,43 @@ A simplified version of the Ymodem upgrade protocol has been added
 
                     }
                 }).build();
-        yModem.start();
+        yModem.start(customData);
     }
 
 
+```
+
+old :
+
+```java
+yModem = new YModem.Builder()
+                .with(this)
+                .filePath("你的文件夹路径") //存放到手机的文件路径 stroge/0/.../xx.bin 这种路径
+                .fileName("你的文件名字")
+                .checkMd5("") //Md5可以写可以不写 看自己的通讯协议
+                .sendSize(1024) //可以修改成你需要的大小
+                .callback(new YModemListener() {
+                    @Override
+                    public void onDataReady(byte[] data) {
+                        thread.write(data);
+                    }
+
+                    @Override
+                    public void onProgress(int currentSent, int total) {
+                        //进度条处理
+                    }
+
+                    @Override
+                    public void onSuccess() {
+                        //成功的显示
+                    }
+
+                    @Override
+                    public void onFailed(String reason) {
+
+                    }
+                }).build();
+        yModem.start();
 ```
 
 3. 可以支持 Ble 以及 经典蓝牙。

@@ -3,7 +3,7 @@
 <br>
 
 ----------------------
-Ymodem Bluetooth communication protocol uses version 19+. What is indicated here is only a communication protocol. For specific operations, you need to check the Demo version. The version has been updated to v2.0.2
+Ymodem Bluetooth communication protocol uses version 19+. What is indicated here is only a communication protocol. For specific operations, you need to check the Demo version. The version has been updated to v2.0.3
 
 Thank you LeonXtp for your help
 

@@ -190,7 +190,7 @@ public static String CRC16_Check(byte[] pushData, int length){
 
 ```java
 	dependencies {
-	        implementation 'com.github.ArdWang:YModemLib:2.0.1'
+	        implementation 'com.github.ArdWang:YModemLib:2.0.3'
 	}
 
 ```

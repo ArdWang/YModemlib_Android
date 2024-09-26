@@ -1,12 +1,10 @@
 package com.bw.yml;
 
 import android.content.Context;
-
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-//import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -25,6 +23,7 @@ class YModemUtil {
     private static final byte EOT = 0x04; /* End Of Transmission */
     private static final byte CPMEOF = 0x1A;/* Fill the last package if not long enough */
     private static final CRC16 crc16 = new CRC16();
+    //private static byte[] mInitBytes;
 
     /**
      * Get the first package data for hello with a terminal

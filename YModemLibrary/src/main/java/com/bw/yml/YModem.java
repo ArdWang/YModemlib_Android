@@ -89,8 +89,9 @@ public class YModem implements FileStreamThread.DataRaderListener {
         this.filePath = filePath;
         this.fileNameString = fileNameString;
         this.fileMd5String = fileMd5String;
-        if(size==0)
-            mSize = 1024;
+        if(size==0) {
+            size = 1024;
+        }
         mSize = size;
         this.mContext = context;
         this.listener = listener;
@@ -154,14 +155,24 @@ public class YModem implements FileStreamThread.DataRaderListener {
     /**
      * ==============================================================================
      * Methods for sending data begin
+     *
+     * 此方法更改如果没有第一包标注位就不需要发送数据
+     * =》直接发送FileName
+     *
      * ==============================================================================
+     *
      */
     private void sendData(String data) {
         streamThread = new FileStreamThread(mContext, filePath, this);
-        CURR_STEP = STEP_HELLO;
-        Lg.f("StartData!!!");
-        byte[] hello = YModemUtil.getYModelData(data);
-        sendPackageData(hello);
+        if(data != null) {
+            CURR_STEP = STEP_HELLO;
+            Lg.f("StartData!!!");
+            byte[] hello = YModemUtil.getYModelData(data);
+            sendPackageData(hello);
+        }else{
+            packageErrorTimes = 0;
+            sendFileName();
+        }
     }
 
     private void sendFileName() {

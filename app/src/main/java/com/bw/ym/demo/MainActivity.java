@@ -108,7 +108,11 @@ public class MainActivity extends AppCompatActivity implements ConnectThread.OnS
 
                     }
                 }).build();
-        yModem.start(customData);
+
+        // 默认为空
+        yModem.start(null);
+        // 有需要的时候再添加
+        //yModem.start(customData);
     }
 
     //用于接受到你蓝牙设备给你反馈的蓝牙信息

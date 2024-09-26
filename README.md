@@ -11,6 +11,20 @@ iOS Version https://github.com/ArdWang/YModemlib_iOS
 
 flutter https://github.com/QuickDevelopers/flutter_ymodem
 
+### Update September 26 2024
+
+You can choose between two options and pass empty。
+
+```
+
+yModem.start(null);
+
+or
+
+yModem.start(customData);
+
+```
+
 ### Update March 3/2024
 
 Added dynamic YModemUtil Data.

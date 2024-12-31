@@ -25,7 +25,7 @@ class YModemUtil {
     private static final CRC16 crc16 = new CRC16();
     //private static byte[] mInitBytes;
 
-    /**
+    /*
      * Get the first package data for hello with a terminal
      */
 //    static byte[] getYModelData() {
@@ -64,12 +64,10 @@ class YModemUtil {
                 new byte[]{seperator},
                 byteFileSize);
 
-        byte[] fileNameBytes2 = new byte[0];
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
-            fileNameBytes2 = Arrays.copyOf(concat(fileNameBytes1,
-                    new byte[]{seperator},
-                    fileMd5String.getBytes()), 128);
-        }
+        byte[] fileNameBytes2;
+        fileNameBytes2 = Arrays.copyOf(concat(fileNameBytes1,
+                new byte[]{seperator},
+                fileMd5String.getBytes()), 128);
 
         byte seq = 0x00;
         return getDataPackage(fileNameBytes2, 128, seq);
@@ -84,9 +82,11 @@ class YModemUtil {
      * @return a encapsulated package data block
      */
     static byte[] getDataPackage(byte[] block, int dataLength, byte sequence) throws IOException {
-        //每次传输 n 个字节的数据
-        byte[] header = getDataHeader(sequence, block.length == YModem.mSize ? STX : SOH);
-        //The last package, fill CPMEOF if the dataLength is not sufficient
+        // 选择合适的包头类型：SOH (128字节) 或 STX (1024字节)
+        byte headerType = (block.length == 128) ? SOH : (block.length == 1024) ? STX : SOH;
+        byte[] header = getDataHeader(sequence, headerType);
+
+        // 填充剩余数据为 CPMEOF（如果数据不足）
         if (dataLength < block.length) {
             int startFil = dataLength;
             while (startFil < block.length) {
@@ -95,13 +95,15 @@ class YModemUtil {
             }
         }
 
-        //We should use short size when writing into the data package as it only needs 2 bytes
+        // 计算CRC校验
         short crc = (short) crc16.calcCRC(block);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);
         dos.writeShort(crc);
         dos.close();
         byte[] crcBytes = baos.toByteArray();
+
+        // 返回完整的包（包头 + 数据 + CRC）
         return concat(header, block, crcBytes);
     }
 

@@ -126,11 +126,11 @@ A simplified version of the Ymodem upgrade protocol has been added
 
 ### Support classic Bluetooth socket communication and ble
 
-1. This update modified some wrong methods。
+1. This update modified some wrong methods.
 
 2. Increase the data size you can choose to send, as shown in the following code, you can modify the size and format of the data received by your device。
 
-3. 可以支持 Ble 以及 经典蓝牙。
+3. Supports Ble and classic Bluetooth.
 
 4. CRC_Check16
 ```java
